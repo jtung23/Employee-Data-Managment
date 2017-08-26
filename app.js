@@ -17,10 +17,19 @@
 		console.log("role: " + newInfo.role);
 		console.log("start: " + newInfo.start);
 		console.log("monthly: " + newInfo.monthly);
+
+	$('#employee-table').append('<tr class="info-row"><td class="employee-name-input"></td><td class="role-input"></td><td class="start-input"></td><td></td><td class="rate-input"></td><td></td></tr>');
+	$('.employee-name-input').html(newInfo.name);
+	$('.role-input').html(newInfo.role);
+	$('.start-input').html(newInfo.start);
+	$('.rate-input').html(newInfo.monthly);
+// add to last row child
 	})
 
 
 $('#add-employee-btn').on('click', function() {
+	event.preventDefault();
+
 	console.log('i was clicked');
   var name = $('#employee-name-input').val();
   var role = $('#role-input').val();
@@ -32,15 +41,12 @@ $('#add-employee-btn').on('click', function() {
 		name: name,
 		role: role,
 		start: start,
-		monthlyR: monthly
+		monthly: monthly
 	})
 
-	database.ref().on('child_added', function(snapshot) {
-		console.log(snapshot.val());
-		var newInfo = snapshot.val();
-		console.log("name: " + newInfo.name);
-		console.log("role: " + newInfo.role);
-		console.log("start: " + newInfo.start);
-		console.log("monthly: " + newInfo.monthly);
-	})
+
+
+
 })
+
+
